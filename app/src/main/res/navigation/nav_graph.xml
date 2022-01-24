@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.catsapi.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_catInfoFragment"
+            app:destination="@id/catInfoFragment"
+            app:enterAnim="@anim/card_flip_right_enter"
+            app:exitAnim="@anim/card_flip_right_exit"
+            app:popEnterAnim="@anim/card_flip_left_enter"
+            app:popExitAnim="@anim/card_flip_left_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/catInfoFragment"
+        android:name="com.example.catsapi.ui.CatInfoFragment"
+        android:label="fragment_cat_info"
+        tools:layout="@layout/fragment_cat_info" >
+        <action
+            android:id="@+id/action_catInfoFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/card_flip_left_enter"
+            app:exitAnim="@anim/card_flip_right_exit"
+            app:popEnterAnim="@anim/card_flip_left_enter"
+            app:popExitAnim="@anim/card_flip_left_exit" />
+        <argument
+            android:name="url"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_catInfoFragment_to_favoriteCatsFragment2"
+            app:destination="@id/favoriteCatsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteCatsFragment"
+        android:name="com.example.catsapi.FavoriteCatsFragment"
+        android:label="fragment_favorite_cats"
+        tools:layout="@layout/fragment_favorite_cats" >
+        <action
+            android:id="@+id/action_favoriteCatsFragment2_to_catInfoFragment"
+            app:destination="@id/catInfoFragment" />
+    </fragment>
+</navigation>

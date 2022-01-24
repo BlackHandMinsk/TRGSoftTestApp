@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CatsApi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_image_btn_text">Save Image</string>
+    <string name="cat_info_text_view_text">Adress</string>
+    <string name="cat_list_content_descr">cat</string>
+    <string name="btn_retry_text">retry</string>
+    <string name="error_text">error</string>
+    <string name="main_fragment_title">Cats</string>
+    <string name="favorite_cats_fragment_title">Favorite Cats</string>
+
+
+    <integer name="card_flip_duration_full">1500</integer>
+    <integer name="card_flip_duration_half">750</integer>
+
+</resources>
