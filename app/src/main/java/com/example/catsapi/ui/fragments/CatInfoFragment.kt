@@ -1,7 +1,9 @@
 package com.example.catsapi.ui.fragments
 
+import android.Manifest
 import android.graphics.Bitmap
 import android.graphics.drawable.AnimationDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -21,11 +23,20 @@ import com.example.catsapi.ui.viewmodels.CatInfoViewModel
 import com.example.catsapi.data.local.entities.FavoritesEntity
 import dagger.hilt.android.AndroidEntryPoint
 import android.os.Environment
+import androidx.annotation.RequiresApi
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import androidx.core.app.ActivityCompat
+
+import android.content.pm.PackageManager
+
+import android.app.Activity
 
 
+
+
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 @ExperimentalPagingApi
 @AndroidEntryPoint
 class CatInfoFragment : Fragment(){
@@ -49,14 +60,14 @@ class CatInfoFragment : Fragment(){
     ): View {
         _binding = FragmentCatInfoBinding.inflate(layoutInflater, container, false)
         setHasOptionsMenu(true)
-
+        verifyStoragePermissions(requireActivity())
         mBinding.textView.text = args.url
         placePictureInView(mBinding.ivCatInfo,args.url)
         setBackGroundAnimation(mBinding.catInfoLayout.background as AnimationDrawable)
 
         mBinding.saveImageBtn.setOnClickListener {
-            saveImageToDownloadFolder(args.url.substring(args.url.lastIndexOf("/")+1),mBinding.ivCatInfo.drawToBitmap())
-        }
+               saveImageToDownloadFolder(args.url.substring(args.url.lastIndexOf("/")+1),mBinding.ivCatInfo.drawToBitmap())
+            }
 
 
 
@@ -152,4 +163,26 @@ class CatInfoFragment : Fragment(){
         super.onDestroyView()
         _binding = null
     }
+
+
+    private fun verifyStoragePermissions(activity: Activity?) {
+
+        val permission = ActivityCompat.checkSelfPermission(
+            requireActivity(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+         if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+            )
+        }
+    }
+
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSIONS_STORAGE = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    )
 }

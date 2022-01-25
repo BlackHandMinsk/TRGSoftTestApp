@@ -10,11 +10,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.catsapi"
-        minSdk 29
-        targetSdk 31
+        minSdk 16
+        targetSdk 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -60,12 +60,13 @@ dependencies {
 
     //parseimage
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    //implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-   // kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
+    kapt ('com.github.bumptech.glide:compiler:4.12.0')
+
 
 
     //Dagger - Hilt
@@ -77,12 +78,11 @@ dependencies {
     // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:3.1.0-alpha04"
     implementation 'androidx.paging:paging-runtime-ktx:3.0.1'
-  //  implementation "com.google.dagger:dagger:2.38.1"
+
 
     //Dot loader
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
 
-    implementation "io.coil-kt:coil:0.11.0"
 
     //Room
     implementation "androidx.room:room-runtime:2.3.0"
