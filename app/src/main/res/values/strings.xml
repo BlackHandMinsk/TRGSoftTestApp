@@ -9,6 +9,10 @@
     <string name="error_text">error</string>
     <string name="main_fragment_title">Cats</string>
     <string name="favorite_cats_fragment_title">Favorite Cats</string>
+    <string name="save_to_favorites">Save to Favorites</string>
+    <string name="cats_fragment_label">Cats</string>
+    <string name="cat_info_fragment_label">Cat photo</string>
+    <string name="favorites_cats_fragment_label">Favorites cats</string>
 
 
     <integer name="card_flip_duration_full">1500</integer>
