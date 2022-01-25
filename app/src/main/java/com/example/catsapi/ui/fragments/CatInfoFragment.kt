@@ -3,31 +3,28 @@ package com.example.catsapi.ui.fragments
 import android.graphics.Bitmap
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.provider.MediaStore
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.drawToBitmap
-
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.navArgs
 import androidx.paging.ExperimentalPagingApi
-
-
 import com.example.catsapi.utils.placePictureInView
-
 import com.example.catsapi.utils.setBackGroundAnimation
 import com.example.catsapi.R
 import com.example.catsapi.databinding.FragmentCatInfoBinding
 import com.example.catsapi.ui.viewmodels.CatInfoViewModel
 import com.example.catsapi.data.local.entities.FavoritesEntity
 import dagger.hilt.android.AndroidEntryPoint
+import android.os.Environment
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
-import kotlin.random.Random
 
 @ExperimentalPagingApi
 @AndroidEntryPoint
@@ -58,7 +55,7 @@ class CatInfoFragment : Fragment(){
         setBackGroundAnimation(mBinding.catInfoLayout.background as AnimationDrawable)
 
         mBinding.saveImageBtn.setOnClickListener {
-        saveImage(mBinding.ivCatInfo.drawToBitmap())
+            saveImageToDownloadFolder(args.url.substring(args.url.lastIndexOf("/")+1),mBinding.ivCatInfo.drawToBitmap())
         }
 
 
@@ -69,18 +66,25 @@ class CatInfoFragment : Fragment(){
     }
 
 
-    private fun saveImage(bitmap: Bitmap){
 
-        val imageFileName = "CAT_" + Random.nextInt()
-        val savedImageURL: String = MediaStore.Images.Media.insertImage(
-            requireContext().contentResolver,
-            bitmap,
-            imageFileName,
-            "CaT Image"
-        )
-        Handler().postDelayed({
-            Toast.makeText(requireContext(),"Image Downloaded",Toast.LENGTH_LONG).show()
-        },1000*5)
+    private fun saveImageToDownloadFolder(imageFile: String, ibitmap: Bitmap) {
+        try {
+            val filePath = File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                imageFile
+            )
+            val outputStream: OutputStream = FileOutputStream(filePath)
+            ibitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream.flush()
+            outputStream.close()
+            Toast.makeText(
+                requireContext(),
+                imageFile + "Saved in Download Folder",
+                Toast.LENGTH_SHORT
+            ).show()
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
     }
 
 
