@@ -67,14 +67,14 @@ class CatInfoFragment : Fragment(){
 
 
 
-    private fun saveImageToDownloadFolder(imageFile: String, ibitmap: Bitmap) {
+    private fun saveImageToDownloadFolder(imageFile: String, bitmap: Bitmap) {
         try {
             val filePath = File(
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                 imageFile
             )
             val outputStream: OutputStream = FileOutputStream(filePath)
-            ibitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
             outputStream.flush()
             outputStream.close()
             Toast.makeText(
