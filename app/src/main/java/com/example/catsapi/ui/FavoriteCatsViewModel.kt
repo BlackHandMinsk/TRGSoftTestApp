@@ -25,7 +25,7 @@ class FavoriteCatsViewModel @Inject constructor(private  val repository: Reposit
 
     }
 
-    fun deleteAllFavoriteCats() = viewModelScope.launch(Dispatchers.IO) {
+      fun deleteAllFavoriteCats() = viewModelScope.launch(Dispatchers.IO) {
         repository.local.deleteAllFavoriteCats()
     }
 }

@@ -13,6 +13,7 @@
     <string name="cats_fragment_label">Cats</string>
     <string name="cat_info_fragment_label">Cat photo</string>
     <string name="favorites_cats_fragment_label">Favorites cats</string>
+    <string name="delete_all_favorite_cats_tittle">Delete all favorite cats</string>
 
 
     <integer name="card_flip_duration_full">1500</integer>
