@@ -1,11 +1,9 @@
-package com.example.catsapi.data
+package com.example.catsapi.data.remote
 
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.catsapi.model.CatImageModel
-import com.example.catsapi.repository.remote.CatsApiService
-import com.example.catsapi.data.CatImagesRepository.Companion.DEFAULT_PAGE_INDEX
+import com.example.catsapi.data.remote.CatImagesRepository.Companion.DEFAULT_PAGE_INDEX
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject

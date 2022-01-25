@@ -1,4 +1,4 @@
-package com.example.catsapi
+package com.example.catsapi.utils
 
 class Constants {
 

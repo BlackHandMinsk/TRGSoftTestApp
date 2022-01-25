@@ -1,7 +1,7 @@
-package com.example.catsapi
+package com.example.catsapi.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.foodrecipesapp.data.database.entities.FavoritesEntity
+import com.example.catsapi.data.local.entities.FavoritesEntity
 
 class CatDiffCallback: DiffUtil.ItemCallback<FavoritesEntity>() {
     override fun areItemsTheSame(

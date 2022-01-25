@@ -1,4 +1,4 @@
-package com.example.catsapi.ui
+package com.example.catsapi.ui.fragments
 
 import android.graphics.Bitmap
 import android.graphics.drawable.AnimationDrawable
@@ -11,17 +11,20 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.drawToBitmap
+
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.navArgs
 import androidx.paging.ExperimentalPagingApi
-import com.example.catsapi.databinding.FragmentCatInfoBinding
 
-import com.example.catsapi.placePictureInView
 
-import com.example.catsapi.setBackGroundAnimation
+import com.example.catsapi.utils.placePictureInView
+
+import com.example.catsapi.utils.setBackGroundAnimation
 import com.example.catsapi.R
-import com.foodrecipesapp.data.database.entities.FavoritesEntity
+import com.example.catsapi.databinding.FragmentCatInfoBinding
+import com.example.catsapi.ui.viewmodels.CatInfoViewModel
+import com.example.catsapi.data.local.entities.FavoritesEntity
 import dagger.hilt.android.AndroidEntryPoint
 
 import kotlin.random.Random
@@ -50,7 +53,7 @@ class CatInfoFragment : Fragment(){
         _binding = FragmentCatInfoBinding.inflate(layoutInflater, container, false)
         setHasOptionsMenu(true)
 
-        mBinding.textView.setText(args.url)
+        mBinding.textView.text = args.url
         placePictureInView(mBinding.ivCatInfo,args.url)
         setBackGroundAnimation(mBinding.catInfoLayout.background as AnimationDrawable)
 
@@ -114,7 +117,7 @@ class CatInfoFragment : Fragment(){
             try {
                 for (cat in favoriteEntity) {
                     if (cat.url == args.url) {
-                        changeMenuItemColor(menuItem, R.color.white)
+                        changeMenuItemColor(menuItem, R.color.yellow)
                         savedCatId = cat.url
                         catSaved = true
                     }

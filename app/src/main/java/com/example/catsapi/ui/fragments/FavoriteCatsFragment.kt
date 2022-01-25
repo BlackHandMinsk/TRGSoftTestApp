@@ -1,4 +1,4 @@
-package com.example.catsapi.ui
+package com.example.catsapi.ui.fragments
 
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
@@ -11,10 +11,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.catsapi.R
 import com.example.catsapi.databinding.FragmentFavoriteCatsBinding
-import com.example.catsapi.databinding.FragmentMainBinding
-import com.example.catsapi.setBackGroundAnimation
-import com.example.catsapi.ui.adapter.CatsAdapter
-import com.example.catsapi.ui.adapter.FavoriteCatsAdapter
+import com.example.catsapi.utils.setBackGroundAnimation
+import com.example.catsapi.ui.viewmodels.FavoriteCatsViewModel
+import com.example.catsapi.ui.adapters.FavoriteCatsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -26,7 +25,7 @@ class FavoriteCatsFragment : Fragment() {
     private var _binding: FragmentFavoriteCatsBinding? = null
     private val mBinding get() = _binding!!
     private  var mAdapter: FavoriteCatsAdapter = FavoriteCatsAdapter()
-    private val favoriteCatsViewModel:FavoriteCatsViewModel by viewModels()
+    private val favoriteCatsViewModel: FavoriteCatsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

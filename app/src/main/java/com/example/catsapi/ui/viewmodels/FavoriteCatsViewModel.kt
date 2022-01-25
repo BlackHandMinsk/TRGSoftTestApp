@@ -1,16 +1,13 @@
-package com.example.catsapi.ui
+package com.example.catsapi.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
-import androidx.paging.PagingData
 import com.example.catsapi.data.Repository
-import com.example.catsapi.model.CatImageModel
-import com.foodrecipesapp.data.database.entities.FavoritesEntity
+import com.example.catsapi.data.local.entities.FavoritesEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

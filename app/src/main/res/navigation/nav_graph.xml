@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.catsapi.ui.MainFragment"
+        android:name="com.example.catsapi.ui.fragments.MainFragment"
         android:label="@string/cats_fragment_label"
         tools:layout="@layout/fragment_main" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/catInfoFragment"
-        android:name="com.example.catsapi.ui.CatInfoFragment"
+        android:name="com.example.catsapi.ui.fragments.CatInfoFragment"
         android:label="@string/cat_info_fragment_label"
         tools:layout="@layout/fragment_cat_info" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteCatsFragment"
-        android:name="com.example.catsapi.ui.FavoriteCatsFragment"
+        android:name="com.example.catsapi.ui.fragments.FavoriteCatsFragment"
         android:label="@string/favorites_cats_fragment_label"
         tools:layout="@layout/fragment_favorite_cats" >
         <action

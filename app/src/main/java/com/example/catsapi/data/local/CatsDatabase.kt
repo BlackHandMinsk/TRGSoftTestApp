@@ -1,9 +1,8 @@
-package com.example.catsapi.data.database
+package com.example.catsapi.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.foodrecipesapp.data.database.entities.FavoritesEntity
+import com.example.catsapi.data.local.entities.FavoritesEntity
 
 
 @Database(

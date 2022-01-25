@@ -1,16 +1,14 @@
-package com.example.catsapi.data
+package com.example.catsapi.data.remote
 
 import androidx.paging.*
 import com.example.catsapi.model.CatImageModel
-import com.example.catsapi.repository.remote.CatsApiService
-
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 
 @ExperimentalPagingApi
 class CatImagesRepository @Inject constructor(
-   private val catsApiService: CatsApiService,
+    private val catsApiService: CatsApiService,
 ) {
 
     companion object {
@@ -18,7 +16,6 @@ class CatImagesRepository @Inject constructor(
         const val DEFAULT_PAGE_SIZE = 10
 
     }
-
 
 
     fun letCatGoImages(pagingConfig: PagingConfig = getDefaultPageConfig()): Flow<PagingData<CatImageModel>> {

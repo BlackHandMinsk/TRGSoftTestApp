@@ -1,6 +1,6 @@
-package com.example.catsapi.data.database
+package com.example.catsapi.data.local
 
-import com.foodrecipesapp.data.database.entities.FavoritesEntity
+import com.example.catsapi.data.local.entities.FavoritesEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

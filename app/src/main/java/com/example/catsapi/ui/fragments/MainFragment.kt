@@ -1,4 +1,4 @@
-package com.example.catsapi.ui
+package com.example.catsapi.ui.fragments
 
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
@@ -14,9 +14,10 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.GridLayoutManager
 
 import com.example.catsapi.databinding.FragmentMainBinding
-import com.example.catsapi.setBackGroundAnimation
-import com.example.catsapi.ui.adapter.CatsAdapter
-import com.example.catsapi.ui.adapter.LoaderStateAdapter
+import com.example.catsapi.utils.setBackGroundAnimation
+import com.example.catsapi.ui.viewmodels.MainViewModel
+import com.example.catsapi.ui.adapters.CatsAdapter
+import com.example.catsapi.ui.adapters.LoaderStateAdapter
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,7 +34,7 @@ class MainFragment : Fragment() {
     private  var mAdapter: CatsAdapter = CatsAdapter()
     private var loaderStateAdapter: LoaderStateAdapter = LoaderStateAdapter { mAdapter.retry() }
 
-    private val mainViewModel:MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
 
 

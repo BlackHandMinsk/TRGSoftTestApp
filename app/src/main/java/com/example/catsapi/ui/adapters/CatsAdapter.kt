@@ -1,6 +1,5 @@
-package com.example.catsapi.ui.adapter
+package com.example.catsapi.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,9 @@ import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.catsapi.R
-import com.example.catsapi.model.CatImageModel
-import com.example.catsapi.placePictureInView
-import com.example.catsapi.ui.MainFragmentDirections
+import com.example.catsapi.utils.placePictureInView
+import com.example.catsapi.ui.fragments.MainFragmentDirections
 
 class CatsAdapter : PagingDataAdapter<String, RecyclerView.ViewHolder>(REPO_COMPARATOR) {
 
@@ -61,7 +58,7 @@ class CatsAdapter : PagingDataAdapter<String, RecyclerView.ViewHolder>(REPO_COMP
         }
 
 
-        var ivCatMain: ImageView = view.findViewById(R.id.cat_image)
+      private  var ivCatMain: ImageView = view.findViewById(R.id.cat_image)
 
         fun bind(item: String?) {
             placePictureInView(ivCatMain,item)

@@ -1,4 +1,4 @@
-package com.example.catsapi.ui.adapter
+package com.example.catsapi.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,9 +1,8 @@
-package com.foodrecipesapp.data.database.entities
+package com.example.catsapi.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.catsapi.Constants.Companion.FAVORITE_CATS_TABLE
-import com.example.catsapi.model.CatImageModel
+import com.example.catsapi.utils.Constants.Companion.FAVORITE_CATS_TABLE
 
 
 @Entity(tableName = FAVORITE_CATS_TABLE)

@@ -2,8 +2,8 @@ package com.example.catsapi.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.catsapi.Constants.Companion.DATABASE_NAME
-import com.example.catsapi.data.database.CatsDatabase
+import com.example.catsapi.utils.Constants.Companion.DATABASE_NAME
+import com.example.catsapi.data.local.CatsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

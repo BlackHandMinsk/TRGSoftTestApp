@@ -1,8 +1,9 @@
 package com.example.catsapi.di
 
-import com.example.catsapi.Constants.Companion.API_KEY
-import com.example.catsapi.Constants.Companion.BASE_URL
-import com.example.catsapi.repository.remote.CatsApiService
+import com.example.catsapi.utils.Constants.Companion.API_KEY
+import com.example.catsapi.utils.Constants.Companion.BASE_URL
+import com.example.catsapi.data.remote.CatsApiService
+import com.example.catsapi.utils.Constants.Companion.HEADER_API_KEY
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +24,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(okHttpNetworkInterceptor: Interceptor, httpLogger: HttpLoggingInterceptor): OkHttpClient {
+    fun provideHttpClient(
+        okHttpNetworkInterceptor: Interceptor,
+        httpLogger: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(okHttpNetworkInterceptor)
             .addInterceptor(httpLogger)
@@ -65,7 +69,7 @@ object NetworkModule {
         return object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val newRequest =
-                    chain.request().newBuilder().addHeader("x-api-key", API_KEY).build()
+                    chain.request().newBuilder().addHeader(HEADER_API_KEY, API_KEY).build()
                 return chain.proceed(newRequest)
             }
         }
