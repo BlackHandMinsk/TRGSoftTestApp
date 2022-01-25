@@ -1,9 +1,7 @@
-package com.foodrecipesapp.data.database
+package com.example.catsapi.data.database
 
-import androidx.paging.PagingSource
+
 import androidx.room.*
-import com.example.catsapi.model.CatImageModel
-import com.foodrecipesapp.data.database.entities.CatsEntity
 import com.foodrecipesapp.data.database.entities.FavoritesEntity
 import kotlinx.coroutines.flow.Flow
 

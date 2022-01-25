@@ -32,7 +32,7 @@ class LoaderStateAdapter(private val retry: () -> Unit) :
             }
         }
 
-        val motionLayout: MotionLayout = view.findViewById(R.id.mlLoader)
+        private val motionLayout: MotionLayout = view.findViewById(R.id.mlLoader)
 
         init {
             view.findViewById<Button>(R.id.btnRetry).setOnClickListener {

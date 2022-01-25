@@ -18,9 +18,7 @@ class CatInfoViewModel
     private  val repository: Repository
 ) : ViewModel(){
 
-//    suspend fun readFavoriteCats(): Flow<List<FavoritesEntity>> {
-//        return repository.local.readFavoriteCats()
-//    }
+
     fun readFavoritesCats():Flow<List<FavoritesEntity>> {
       return  repository.local.readFavoriteCats()
     }

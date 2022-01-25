@@ -21,7 +21,7 @@ import java.lang.Exception
 
 
 fun placePictureInView(view:ImageView, pictureUrl: String?){
-    Glide.with(view.context).load(pictureUrl).into(view)
+    Glide.with(view.context).load(pictureUrl).placeholder(R.drawable.placeholder).into(view)
 }
 
 fun setBackGroundAnimation(animationDrawable: AnimationDrawable){

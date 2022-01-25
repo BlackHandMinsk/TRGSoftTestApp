@@ -31,9 +31,9 @@ class FavoriteCatsAdapter: ListAdapter<FavoritesEntity, FavoriteCatsAdapter.Main
         }
     }
 
-    override fun onViewDetachedFromWindow(holder: MainViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-    }
+//    override fun onViewDetachedFromWindow(holder: MainViewHolder) {
+//        super.onViewDetachedFromWindow(holder)
+//    }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val ivCatMain: ImageView = holder.binding.catImage

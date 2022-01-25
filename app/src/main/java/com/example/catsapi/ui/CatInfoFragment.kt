@@ -83,7 +83,7 @@ class CatInfoFragment : Fragment(){
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.details_menu, menu)
-        checkSavedRecipes(menu.findItem(R.id.save_to_favorites_menu))
+        checkSavedCat(menu.findItem(R.id.save_to_favorites_menu))
     }
 
 
@@ -105,51 +105,33 @@ class CatInfoFragment : Fragment(){
         )
         catInfoViewModel.addToFavorite(favoritesEntity)
         changeMenuItemColor(item, R.color.black)
-       // showSnackBar("Recipe saved")
+        Toast.makeText(requireContext(),"Cat saved to favorites",Toast.LENGTH_SHORT).show()
         catSaved = true
     }
-///TO DO
-    private fun checkSavedRecipes(menuItem: MenuItem) {
+
+    private fun checkSavedCat(menuItem: MenuItem) {
         catInfoViewModel.readFavoritesCats().asLiveData().observe(this, { favoriteEntity ->
             try {
                 for (cat in favoriteEntity) {
                     if (cat.url == args.url) {
-                        changeMenuItemColor(menuItem, R.color.black)
+                        changeMenuItemColor(menuItem, R.color.white)
                         savedCatId = cat.url
                         catSaved = true
                     }
                 }
             } catch (e: Exception) {
-                Log.d("DetailsActivity", e.message.toString())
+                Log.d("Check", e.message.toString())
             }
         })
-//        catInfoViewModel.readFavoritesCats().observe(this, { favoriteEntity ->
-//            try {
-//                for (savedRecipe in favoriteEntity) {
-//                    if (savedRecipe.result.id == args.result.id) {
-//                        changeMenuItemColor(menuItem, R.color.yellow)
-//                        savedRecipeId = savedRecipe.id
-//                        recipeSaved = true
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                Log.d("DetailsActivity", e.message.toString())
-//            }
-//        })
     }
 
     private fun removeFromFavorites(item: MenuItem) {
         val favoritesEntity = FavoritesEntity(savedCatId, args.url)
         catInfoViewModel.deleteFavoriteCats(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-       // showSnackBar("Remove from favorites")
+        Toast.makeText(requireContext(),"Remove from favorites",Toast.LENGTH_SHORT).show()
         catSaved = false
     }
-
-
-//    private fun showSnackBar(message: String) {
-//        Snackbar.make(detailsLayout, message, Snackbar.LENGTH_SHORT).setAction("Ok") {}.show()
-//    }
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
         item.icon.setTint(ContextCompat.getColor(requireContext(), color))
@@ -163,6 +145,4 @@ class CatInfoFragment : Fragment(){
         super.onDestroyView()
         _binding = null
     }
-
-
 }

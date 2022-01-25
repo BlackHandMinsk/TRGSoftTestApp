@@ -27,8 +27,6 @@ class FavoriteCatsFragment : Fragment() {
     private var _binding: FragmentFavoriteCatsBinding? = null
     private val mBinding get() = _binding!!
     private  var mAdapter: FavoriteCatsAdapter = FavoriteCatsAdapter()
-
-
     private val favoriteCatsViewModel:FavoriteCatsViewModel by viewModels()
 
     override fun onCreateView(
@@ -37,7 +35,7 @@ class FavoriteCatsFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteCatsBinding.inflate(layoutInflater, container, false)
         setHasOptionsMenu(true)
-        setUpViews(view)
+        setUpViews()
         fetchCatGoImages()
         setBackGroundAnimation(mBinding.favoriteCatsLayout.background as AnimationDrawable)
 
@@ -47,7 +45,7 @@ class FavoriteCatsFragment : Fragment() {
     }
 
 
-    private fun setUpViews(view: View?) {
+    private fun setUpViews() {
         mBinding.favoritesCatsList.layoutManager = GridLayoutManager(context, 2)
         mBinding.favoritesCatsList.adapter = mAdapter
     }

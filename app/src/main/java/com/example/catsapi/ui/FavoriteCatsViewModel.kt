@@ -8,8 +8,10 @@ import com.example.catsapi.data.Repository
 import com.example.catsapi.model.CatImageModel
 import com.foodrecipesapp.data.database.entities.FavoritesEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @ExperimentalPagingApi
@@ -21,5 +23,9 @@ class FavoriteCatsViewModel @Inject constructor(private  val repository: Reposit
     fun fetchCatGoImages(): Flow<List<FavoritesEntity>> {
         return repository.local.readFavoriteCats()
 
+    }
+
+    fun deleteAllFavoriteCats() = viewModelScope.launch(Dispatchers.IO) {
+        repository.local.deleteAllFavoriteCats()
     }
 }

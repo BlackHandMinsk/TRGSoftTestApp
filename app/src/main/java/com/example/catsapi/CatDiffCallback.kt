@@ -12,5 +12,5 @@ class CatDiffCallback: DiffUtil.ItemCallback<FavoritesEntity>() {
     override fun areContentsTheSame(
         oldItem: FavoritesEntity,
         newItem: FavoritesEntity
-    ): Boolean = oldItem==newItem
+    ): Boolean = oldItem.equals(newItem)
 }

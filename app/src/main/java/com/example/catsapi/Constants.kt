@@ -9,6 +9,6 @@ class Constants {
     const val HEADER_API_KEY = "x-api-key"
     const val DATABASE_NAME = "cats_database"
     const val FAVORITE_CATS_TABLE = "favorite_cats_table"
-    const val CATS_TABLE = "cats_table"
+
   }
 }
